@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="js/script.js" type="text/javascript"></script>
@@ -15,7 +16,7 @@
 <body class="h-full bg-white">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 z-20 w-full bg-red-600 border-b border-red-500" aria-label="Navbar">
+  <nav class="fixed top-0 z-50 w-full bg-red-600 border-b border-red-500" aria-label="Navbar">
     <div class="mx-auto max-w-full px-6">
       <div class="relative flex h-24 items-center justify-between">
         <div class="flex flex-1 items-center items-stretch justify-start">
@@ -38,7 +39,7 @@
   </nav>
 
   <!-- Sidebar -->
-  <aside class="fixed top-0 left-0 z-10 h-screen pt-28 border-r translate-x-0 transition-transform bg-gray-300 border-gray-200" aria-label="Sidebar">
+  <aside class="fixed top-0 left-0 z-40 h-screen pt-28 border-r translate-x-0 transition-transform bg-gray-300 border-gray-200" aria-label="Sidebar">
     <!-- Full -->
     <div id="sidebar-full" class="h-full w-64 px-4 pb-4 overflow-y-auto bg-gray-300 hidden">
       <ul class="space-y-2 font-medium">
@@ -89,21 +90,98 @@
   </aside>
 
   <!-- Content -->
-  <main class="grid h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-    <div class="text-center">
-      <p class="text-base font-semibold text-indigo-600">404</p>
-      <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>
-      <p class="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re looking for.</p>
-      <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Go back home</a>
-        <a href="#" class="text-sm font-semibold text-gray-900">Contact support <span aria-hidden="true">&rarr;</span></a>
+  <main class="min-h-full pt-40 ml-14">
+    <div class="grid relative place-items-center">
+
+      <div class="grid relative">
+        <!-- Group 1 -->
+        <div class="flex ml-16">
+          <div class="flex flex-none items-center justify-center text-gray-600 relative border-2 border-gray-500 w-36 h-72 text-center font-bold">
+            <div class="grid border-y-2 border-l-2 items-center justify-center border-gray-500 absolute right-0 mb-16 w-14 h-14 text-3xs bg-gray-200 hover:bg-blue-200 z-30">
+              Proses Pencetakan
+            </div>
+            <div class="relative grid w-full h-full items-center justify-center z-20 text-2xs bg-gray-200 hover:bg-blue-200 z-20">
+              <div class="absolute left-0 right-0 bottom-0 mb-16 px-4">Rak Penyimpanan Sementara</div>
+            </div>
+          </div>
+
+          <!-- Row 1 -->
+          <div class="flex flex-col gap-y-4 mt-4">
+            <div class="flex">
+              <div class="map-flex border-y-2 border-r-2 w-56 h-20 text-center">
+                Rak Penyimpanan Sementara
+              </div>
+              <div class="map-grid border-y-2 border-r-2 w-14 h-20 text-center text-3xs">
+                <div class="grid w-full h-full border-b-2 border-gray-500 row-span-3"></div>
+                <div class="map-grid-item w-full h-full row-span-5">
+                  Proses Pencetakan
+                </div>
+              </div>
+              <div class="map-flex border-y-2 border-r-2 w-40 h-20 text-center">
+                Rak Penyimpanan Sementara
+              </div>
+              <div class="map-grid border-y-2 border-r-2 w-14 h-20 text-center text-3xs">
+                <div class="grid w-full h-full border-b-2 border-gray-500 row-span-3"></div>
+                <div class="map-grid-item w-full h-full row-span-5">
+                  Proses Pencetakan
+                </div>
+              </div>
+              <div class="map-flex border-y-2 border-r-2 w-44 h-20 text-center">
+                Rak Penyimpanan Sementara
+              </div>
+              <div class="map-flex border-y-2 w-24 h-20 text-center">
+                Proses Penggilingan
+              </div>
+              <div class="map-flex border-2 w-48 h-24 text-center">
+                Penyimpanan Bahan Baku
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="flex">
+              <div class="map-flex border-y-2 border-r-2 w-52 h-40 text-center">
+                Proses Penjemuran
+              </div>
+              <div class="grid items-center justify-center w-36 h-40 text-center font-bold text-gray-600 text-2xs">
+                <div class="relative bg-gray-200 w-36 h-full border-b-2 border-gray-500 row-span-4 border-t-2 border-r-2">
+                  <div class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-28 h-10 text-white border-2 border-green-600 hover:bg-green-600">Area Inspeksi dan Pengecatan</div>
+                </div>
+                <div class="grid items-center justify-center w-full h-full row-span-4 text-white border-b-2 border-r-2 border-green-600 bg-green-500 hover:bg-green-600">
+                  Proses Pembakaran
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group 2 -->
+        <div class="flex gap-x-52 mt-16">
+          <div class="map-flex border-2 w-52 h-20 text-center">
+            Rak Penyimpanan Sementara
+          </div>
+          <div class="flex">
+            <div class="map-flex border-2 w-36 h-20 text-center">
+              Proses Pembakaran
+            </div>
+            <div class="flex flex-none items-center justify-center text-gray-600 relative border-y-2 border-r-2 border-gray-500 w-[410px] h-20 text-center font-bold">
+              <div class="grid border-b-2 border-x-2 items-center justify-center border-gray-500 absolute top-0 right-0 mr-28 w-14 h-14 text-3xs bg-gray-200 hover:bg-blue-200 z-30">
+                Proses Pencetakan
+              </div>
+              <div class="grid border-b-2 border-x-2 items-center justify-center border-gray-500 absolute top-0 right-0 mr-12 w-14 h-14 text-3xs bg-gray-200 hover:bg-blue-200 z-30">
+                Proses Pencetakan
+              </div>
+              <div class="relative grid w-full h-full items-center justify-center z-20 text-2xs bg-gray-200 hover:bg-blue-200 z-20">
+                <div class="absolute left-0 right-0 mr-36 px-4">Rak Penyimpanan Sementara</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
-
   <!-- Footer -->
-  <footer>
+  <footer class="w-full">
     <div class="p-4 bg-gray-800">
       <div class="flex gap-x-2 text-center justify-center py-2">
         <p class="text-neutral-200">© 2023</p>
