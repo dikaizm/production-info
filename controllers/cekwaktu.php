@@ -11,5 +11,8 @@ $waktu = $data['waktu'];
 //uji, apabila bila waktu belum ada, maka anggap waktu = 0
 if ($waktu < 0) $waktu = 0;
 
-//cetak nilai waktu
-echo $waktu;
+//reformat waktu ke format yang diinginkan
+$reformattedWaktu = date("l, j F Y", strtotime($waktu));
+
+//cetak nilai waktu yang diformat
+echo $reformattedWaktu;

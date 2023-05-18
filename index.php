@@ -173,8 +173,8 @@
                       <span class="hidden" id="id"></span>
                       <p>Tanggal: <span id="cekwaktu"></span> </p>
                       <h4 class="font-bold py-2">Suhu Pembakaran</h4>
-                      <p>Celcius : <span id="ceksuhucel"></span> </p>
-                      <p>Fahrenheit : <span id="ceksuhufah"></span> </p>
+                      <p>Celcius : <span id="ceksuhucel"></span> °C</p>
+                      <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>
                     </div>
                   </span>
                 </button>
