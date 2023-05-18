@@ -8,6 +8,32 @@ function toggleSidebar() {
     }
 }
 
+function toggleStatus(name) {
+    var popoverCard = $(name).find('.popover-card');
+    if (popoverCard.css('visibility') === 'hidden') {
+        popoverCard.addClass('popover-show').removeClass('popover-default');
+    } else {
+        popoverCard.removeClass('popover-show').addClass('popover-default');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     $('#sidebar-btn').on('click', toggleSidebar);
+    $('#pembakaran-btn').on('click', function () {
+        toggleStatus($(this));
+    });
+    $('#inspeksi-btn').on('click', function () {
+        toggleStatus($(this));
+    });
+
+    $('#inspeksi-sidebar').on('click', function () {
+        toggleStatus($('#inspeksi-btn'));
+    })
+    $('#pembakaran-sidebar').on('click', function () {
+        toggleStatus($('#pembakaran-btn'));
+    })
+
+    document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+    });
 })

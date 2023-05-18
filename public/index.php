@@ -52,7 +52,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
+          <button id="pembakaran-sidebar" type="button" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
               <path d="M12 24c-5 0-9-4-9-9 0-4 2.4-8.2 3.4-9.8C7 4.3 9.8 0 12 0c.6 0 1 .4 1 1s-.4 1-1 1c-1.4.2-7 7.4-7 13 0 3.9 3.1 7 7 7s7-3.1 7-7c0-.8-.1-1.6-.3-2.6-.5-1.9-1.4-4.1-2.7-6.1-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3 1.4 2.2 2.4 4.6 3 6.7.2 1.1.3 2.2.3 3.1 0 5-4 9-9 9z" />
               <path d="M15 9.9c-.3 0-.6-.1-.8-.3C12.1 7.2 11 4.2 11 1c0-.6.4-1 1-1s1 .4 1 1c0 2.7 1 5.3 2.7 7.3.4.4.3 1-.1 1.4-.1.1-.4.2-.6.2z" />
@@ -60,17 +60,17 @@
               <path d="M13.5 17c-.3 0-.6-.1-.8-.3-1.1-1.4-1.7-3-1.7-4.7 0-.6.4-1 1-1s1 .4 1 1c0 1.2.4 2.4 1.2 3.3.4.4.3 1-.1 1.4-.1.2-.4.3-.6.3z" />
             </svg>
             <span class="ml-3">Proses Pembakaran</span>
-          </a>
+          </button>
         </li>
         <li>
-          <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
+          <button id="inspeksi-sidebar" type="button" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
               <g data-name="Layer 2">
                 <path d="m20.71 19.29-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" data-name="search"></path>
               </g>
             </svg>
             <span class="ml-3">Proses Inspeksi</span>
-          </a>
+          </button>
         </li>
       </ul>
     </div>
@@ -90,17 +90,17 @@
   </aside>
 
   <!-- Content -->
-  <main class="min-h-full pt-40 ml-14">
+  <main class="min-h-[calc(100vh-64px)] pt-40 ml-14">
     <div class="grid relative place-items-center">
 
       <div class="grid relative">
         <!-- Group 1 -->
         <div class="flex ml-16">
           <div class="flex flex-none items-center justify-center text-gray-600 relative border-2 border-gray-500 w-36 h-72 text-center font-bold">
-            <div class="grid border-y-2 border-l-2 items-center justify-center border-gray-500 absolute right-0 mb-16 w-14 h-14 text-3xs bg-gray-200 hover:bg-blue-200 z-30">
+            <div class="grid border-y-2 border-l-2 items-center justify-center border-gray-500 absolute right-0 mb-16 w-14 h-14 text-3xs bg-gray-200 z-30">
               Proses Pencetakan
             </div>
-            <div class="relative grid w-full h-full items-center justify-center z-20 text-2xs bg-gray-200 hover:bg-blue-200 z-20">
+            <div class="relative grid w-full h-full items-center justify-center z-20 text-2xs bg-gray-200 z-20">
               <div class="absolute left-0 right-0 bottom-0 mb-16 px-4">Rak Penyimpanan Sementara</div>
             </div>
           </div>
@@ -139,16 +139,45 @@
 
             <!-- Row 2 -->
             <div class="flex">
-              <div class="map-flex border-y-2 border-r-2 w-52 h-40 text-center">
+              <div class="map-flex relative border-y-2 border-r-2 w-52 h-40 text-center">
                 Proses Penjemuran
               </div>
-              <div class="grid items-center justify-center w-36 h-40 text-center font-bold text-gray-600 text-2xs">
-                <div class="relative bg-gray-200 w-36 h-full border-b-2 border-gray-500 row-span-4 border-t-2 border-r-2">
-                  <div class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-28 h-10 text-white border-2 border-green-600 hover:bg-green-600">Area Inspeksi dan Pengecatan</div>
+              <div class="grid relative items-center justify-center w-40 h-40 text-center font-bold text-gray-600 text-2xs">
+                <div class="relative bg-gray-200 w-40 h-full border-b-2 border-gray-500 row-span-4 border-t-2 border-r-2">
+                  <div class="grid items-center justify-center absolute left-0 top-0 bg-green-400 w-fit py-1 px-1 text-white border-2 border-green-500 text-3xs">Kualitas 1</div>
+                  <div class="grid items-center justify-center absolute right-0 top-0 bg-yellow-400 w-fit py-1 px-1 text-white border-2 border-yellow-500 text-3xs">Kualitas 2</div>
+                  <div class="grid items-center justify-center absolute right-0 top-0 mt-8 bg-red-400 w-fit py-1 px-1 text-white border-2 border-red-500 text-3xs">Kualitas 3</div>
+                  <button type="button" id="inspeksi-btn" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-green-600 hover:bg-green-600">Area Inspeksi & Pengecatan
+                    <span id="inspeksi-card" class="popover-card popover-default text-sm text-gray-600 rounded-lg shadow-xl">
+                      <div class="px-4 py-2 rounded-t-lg bg-gray-700">
+                        <h3 class="font-semibold text-white text-xs">Proses Inspeksi</h3>
+                      </div>
+                      <div class="px-4 py-2 text-xs">
+                        <p>Tanggal Produksi: </p>
+                        <p>Total Produksi: </p>
+                        <h4 class="font-bold py-2">Hasil Produksi</h4>
+                        <p>Kualitas 1 :</p>
+                        <p>Kualitas 2 :</p>
+                        <p>Kualitas 3 :</p>
+                      </div>
+                    </span>
+                  </button>
                 </div>
-                <div class="grid items-center justify-center w-full h-full row-span-4 text-white border-b-2 border-r-2 border-green-600 bg-green-500 hover:bg-green-600">
+
+                <button type="button" id="pembakaran-btn" class="grid relative items-center justify-center w-full h-full row-span-4 text-white border-b-2 border-r-2 border-green-600 bg-green-500 hover:bg-green-600">
                   Proses Pembakaran
-                </div>
+                  <span id="pembakaran-card" class="popover-card popover-default text-sm text-gray-600 rounded-lg shadow-xl">
+                    <div class="px-4 py-2 rounded-t-lg bg-gray-700">
+                      <h3 class="font-semibold text-white text-xs">Proses Pembakaran</h3>
+                    </div>
+                    <div class="px-4 py-2 text-xs">
+                      <p>Tanggal: </p>
+                      <h4 class="font-bold py-2">Suhu Pembakaran</h4>
+                      <p>Celcius :</p>
+                      <p>Fahrenheit :</p>
+                    </div>
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -160,18 +189,18 @@
             Rak Penyimpanan Sementara
           </div>
           <div class="flex">
-            <div class="map-flex border-2 w-36 h-20 text-center">
+            <div class="map-flex border-2 w-40 h-20 text-center">
               Proses Pembakaran
             </div>
-            <div class="flex flex-none items-center justify-center text-gray-600 relative border-y-2 border-r-2 border-gray-500 w-[410px] h-20 text-center font-bold">
-              <div class="grid border-b-2 border-x-2 items-center justify-center border-gray-500 absolute top-0 right-0 mr-28 w-14 h-14 text-3xs bg-gray-200 hover:bg-blue-200 z-30">
+            <div class="flex flex-none items-center justify-center text-gray-600 relative border-y-2 border-r-2 border-gray-500 w-96 h-20 text-center font-bold">
+              <div class="grid border-b-2 border-x-2 items-center justify-center border-gray-500 absolute top-0 right-0 mr-28 w-14 h-14 text-3xs bg-gray-200 z-30">
                 Proses Pencetakan
               </div>
-              <div class="grid border-b-2 border-x-2 items-center justify-center border-gray-500 absolute top-0 right-0 mr-12 w-14 h-14 text-3xs bg-gray-200 hover:bg-blue-200 z-30">
+              <div class="grid border-b-2 border-x-2 items-center justify-center border-gray-500 absolute top-0 right-0 mr-12 w-14 h-14 text-3xs bg-gray-200 z-30">
                 Proses Pencetakan
               </div>
-              <div class="relative grid w-full h-full items-center justify-center z-20 text-2xs bg-gray-200 hover:bg-blue-200 z-20">
-                <div class="absolute left-0 right-0 mr-36 px-4">Rak Penyimpanan Sementara</div>
+              <div class="relative grid w-full h-full items-center justify-center z-20 text-2xs bg-gray-200 z-20">
+                <div class="absolute left-0 ml-6 px-4">Rak Penyimpanan Sementara</div>
               </div>
             </div>
           </div>
@@ -182,8 +211,8 @@
 
   <!-- Footer -->
   <footer class="w-full">
-    <div class="p-4 bg-gray-800">
-      <div class="flex gap-x-2 text-center justify-center py-2">
+    <div class="h-16 bg-gray-800 grid items-center justify-center">
+      <div class="flex gap-x-2">
         <p class="text-neutral-200">© 2023</p>
         <p class="text-neutral-400">S1 Teknik Industri - Universitas Telkom</p>
       </div>
