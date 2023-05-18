@@ -36,4 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('contextmenu', function (event) {
         event.preventDefault();
     });
+
+    // Realtime load pembakaran
+    setInterval(function () {
+        $("#id").load("controllers/id.php");
+        $("#ceksuhucel").load("controllers/ceksuhucel.php");
+        $("#ceksuhufah").load("controllers/ceksuhufah.php");
+        $("#cekwaktu").load("controllers/cekwaktu.php");
+    }, 1000);
 })

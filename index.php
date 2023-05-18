@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -171,10 +170,11 @@
                       <h3 class="font-semibold text-white text-xs">Proses Pembakaran</h3>
                     </div>
                     <div class="px-4 py-2 text-xs">
-                      <p>Tanggal: </p>
+                      <span class="hidden" id="id"></span>
+                      <p>Tanggal: <span id="cekwaktu"></span> </p>
                       <h4 class="font-bold py-2">Suhu Pembakaran</h4>
-                      <p>Celcius :</p>
-                      <p>Fahrenheit :</p>
+                      <p>Celcius : <span id="ceksuhucel"></span> </p>
+                      <p>Fahrenheit : <span id="ceksuhufah"></span> </p>
                     </div>
                   </span>
                 </button>
@@ -213,7 +213,7 @@
   <footer class="w-full">
     <div class="h-16 bg-gray-800 grid items-center justify-center">
       <div class="flex gap-x-2">
-        <p class="text-neutral-200">© 2023</p>
+        <p class="text-neutral-200">© 2022</p>
         <p class="text-neutral-400">S1 Teknik Industri - Universitas Telkom</p>
       </div>
     </div>
