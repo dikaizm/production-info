@@ -21,6 +21,7 @@ while (true) {
 	mysqli_query($konek, "ALTER TABLE suhu_pembakaran AUTO_INCREMENT=1");
 	//simpan data sensor ke tabel suhu_pembakaran
 	$simpan = mysqli_query($konek, "insert into suhu_pembakaran(suhucel, suhufah)values('$suhucel', '$suhufah')");
+	
 	//uji simpan untuk memberi respon
 	if ($simpan) {
 		echo "Berhasil dikirim";
@@ -28,5 +29,5 @@ while (true) {
 		echo "Gagal Terkirim";
 	}
 
-	sleep(1);
+	sleep(2);
 }
