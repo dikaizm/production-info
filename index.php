@@ -152,12 +152,13 @@
                         <h3 class="font-semibold text-white text-xs">Proses Inspeksi</h3>
                       </div>
                       <div class="px-4 py-2 text-xs">
-                        <p>Tanggal Produksi: </p>
-                        <p>Total Produksi: </p>
+                        <span class="hidden" id="genteng-id"></span>
+                        <p>Tanggal Produksi: <span id="genteng-cekwaktu"></span></p>
+                        <p>Total Produksi: <span id="genteng-total"></span></p>
                         <h4 class="font-bold py-2">Hasil Produksi</h4>
-                        <p>Kualitas 1 :</p>
-                        <p>Kualitas 2 :</p>
-                        <p>Kualitas 3 :</p>
+                        <p>Kualitas 1 : <span id="genteng-bagus"></span></p>
+                        <p>Kualitas 2 : <span id="genteng-batuputih"></span></p>
+                        <p>Kualitas 3 : <span id="genteng-rusak"></span></p>
                       </div>
                     </span>
                   </button>
@@ -171,7 +172,7 @@
                     </div>
                     <div class="px-4 py-2 text-xs">
                       <span class="hidden" id="id"></span>
-                      <p>Tanggal: <span id="cekwaktu"></span> </p>
+                      <p>Tanggal: <span id="cekwaktu"></span></p>
                       <h4 class="font-bold py-2">Suhu Pembakaran</h4>
                       <p>Celcius : <span id="ceksuhucel"></span> °C</p>
                       <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>

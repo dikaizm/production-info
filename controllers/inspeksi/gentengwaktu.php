@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('../config.php');
 
 //buatlah koneksi ke database
 $konek = mysqli_connect(
@@ -10,7 +10,7 @@ $konek = mysqli_connect(
 );
 
 //baca data dari tabel datasensor
-$sql = mysqli_query($konek, "SELECT * from suhu_pembakaran order by id desc"); //data terakhir akan ada di atas
+$sql = mysqli_query($konek, "SELECT * from hasil_inspeksi order by id desc"); //data terakhir akan ada di atas
 
 //baca data paling atas
 $data = mysqli_fetch_array($sql);

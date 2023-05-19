@@ -1,6 +1,14 @@
 <?php
+require('config.php');
+
 //buatlah koneksi ke database
-$konek = mysqli_connect("127.0.0.1", "root", "12345678", "u1571246_databasepembakaran");
+$konek = mysqli_connect(
+	$config['hostname'],
+	$config['username'],
+	$config['password'],
+	$config['database']
+);
+
 //baca data dari tabel datasensor
 $sql = mysqli_query($konek, "SELECT * from suhu_pembakaran order by id desc"); //data terakhir akan ada di atas
 
