@@ -56,56 +56,30 @@ body {
   background-color: #aac8f4;
 } */
 
-.popover-card {
+.tippy-tooltip.popover-theme {
   box-sizing: border-box;
-  position: absolute;
-  top: 115%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
+  background-color: #fff;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #f3f4f6;
+  color: #4c4f56;
   font-weight: normal;
   white-space: nowrap;
-  width: 210px;
+  width: auto;
   height: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
   font: 10px;
   line-height: 15px;
   letter-spacing: normal;
   cursor: text;
   z-index: 30;
-  margin-left: -105px;
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 }
 
-.popover-default {
-  visibility: hidden;
-  opacity: 0;
-  transform: translate3d(0, 10px,0);
-  transition: .3s;
+.tippy-tooltip.popover-theme .tippy-arrow {
+  border-top-color: white;
 }
-
-.popover-show {
-  visibility: visible;
-  opacity: 1;
-  transform: translate3d(0, 0px,0);
-  transition: .3s;
-}
-
-.popover-card::before {
-  position: absolute;
-  content: '';
-  width: 16px;
-  height: 16px;
-  background: #4B5563;
-  top: -5px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  transform: rotate(45deg);
-  z-index: -1;
-}
-
-/* .popover-btn:hover .popover-card {
-  visibility: visible;
-  opacity: 1;
-  transform: translate3d(0,0px,0);
-  transition: .3s;
-} */

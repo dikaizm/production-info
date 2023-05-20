@@ -1,36 +1,26 @@
 function toggleSidebar() {
-    if ($('#sidebar-full').is(':visible')) {
-        $('#sidebar-full').addClass('hidden');
-        $('#sidebar-partial').removeClass('hidden');
+    if ($('#sidebar-full').hasClass('-translate-x-full')) {
+        $('#sidebar-full').removeClass('-translate-x-full');
     } else {
-        $('#sidebar-full').removeClass('hidden');
-        $('#sidebar-partial').addClass('hidden');
-    }
-}
-
-function toggleStatus(name) {
-    var popoverCard = $(name).find('.popover-card');
-    if (popoverCard.css('visibility') === 'hidden') {
-        popoverCard.addClass('popover-show').removeClass('popover-default');
-    } else {
-        popoverCard.removeClass('popover-show').addClass('popover-default');
+        $('#sidebar-full').addClass('-translate-x-full');
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     $('#sidebar-btn').on('click', toggleSidebar);
-    $('#pembakaran-btn').on('click', function () {
-        toggleStatus($(this));
-    });
-    $('#inspeksi-btn').on('click', function () {
-        toggleStatus($(this));
-    });
-
+    
     $('#inspeksi-sidebar').on('click', function () {
-        toggleStatus($('#inspeksi-btn'));
+        $('#inspeksi-btn').click();
     })
     $('#pembakaran-sidebar').on('click', function () {
-        toggleStatus($('#pembakaran-btn'));
+        $('#pembakaran-btn').click();
+    })
+
+    $('#inspeksi-sidebar-icon').on('click', function () {
+        $('#inspeksi-btn').click();
+    })
+    $('#pembakaran-sidebar-icon').on('click', function () {
+        $('#pembakaran-btn').click();
     })
 
     document.addEventListener('contextmenu', function (event) {
@@ -53,4 +43,39 @@ document.addEventListener('DOMContentLoaded', function () {
         $("#ceksuhufah").load("controllers/ceksuhufah.php");
         $("#cekwaktu").load("controllers/cekwaktu.php");
     }, 1000);
+
+    // Popover tippyjs
+    const pembakaranCard = document.getElementById('pembakaran-card');
+    const inspeksiCard = document.getElementById('inspeksi-card');
+
+    tippy('#pembakaran-btn', {
+        content: 'Loading...',
+        allowHTML: true,
+        theme: 'popover',
+        arrow: true,
+        trigger: 'click',
+        flipOnUpdate: true,
+        onShow(instance) {
+            setInterval(function () {
+                instance.setContent(pembakaranCard.innerHTML);
+            }, 1000);
+        },
+        onHidden(instance) {
+            instance.setContent('Loading...');
+        },
+    });
+
+    tippy('#inspeksi-btn', {
+        content: 'Loading...',
+        allowHTML: true,
+        theme: 'popover',
+        arrow: true,
+        trigger: 'click',
+        flipOnUpdate: true,
+        onShow(instance) {
+            setInterval(function () {
+                instance.setContent(inspeksiCard.innerHTML);
+            }, 1000);
+        },
+    });
 })

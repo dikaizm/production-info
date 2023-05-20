@@ -6,10 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" type="text/javascript"></script>
+
+  <!-- Tippy js -->
+  <script src="https://unpkg.com/popper.js@1"></script>
+  <script src="https://unpkg.com/tippy.js@5"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js/dist/themes/light.css" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="js/script.js" type="text/javascript"></script>
 </head>
 
 <body class="h-full bg-white">
@@ -37,55 +46,71 @@
     </div>
   </nav>
 
-  <!-- Sidebar -->
-  <aside class="fixed top-0 left-0 z-40 h-screen pt-28 border-r translate-x-0 transition-transform bg-gray-300 border-gray-200" aria-label="Sidebar">
-    <!-- Full -->
-    <div id="sidebar-full" class="h-full w-64 px-4 pb-4 overflow-y-auto bg-gray-300 hidden">
-      <ul class="space-y-2 font-medium">
-        <li>
-          <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" id="house">
-              <path fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M151.99414,207.99263v-48.001a8,8,0,0,0-8-8h-32a8,8,0,0,0-8,8v48.001a8,8,0,0,1-7.999,8l-47.99414.00632a8,8,0,0,1-8.001-8v-92.4604a8,8,0,0,1,2.61811-5.91906l79.9945-72.73477a8,8,0,0,1,10.76339-.00036l80.0055,72.73509A8,8,0,0,1,216,115.53887V207.999a8,8,0,0,1-8.001,8l-48.00586-.00632A8,8,0,0,1,151.99414,207.99263Z"></path>
-            </svg>
-            <span class="ml-3">Home</span>
-          </a>
-        </li>
-        <li>
-          <button id="pembakaran-sidebar" type="button" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
-              <path d="M12 24c-5 0-9-4-9-9 0-4 2.4-8.2 3.4-9.8C7 4.3 9.8 0 12 0c.6 0 1 .4 1 1s-.4 1-1 1c-1.4.2-7 7.4-7 13 0 3.9 3.1 7 7 7s7-3.1 7-7c0-.8-.1-1.6-.3-2.6-.5-1.9-1.4-4.1-2.7-6.1-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3 1.4 2.2 2.4 4.6 3 6.7.2 1.1.3 2.2.3 3.1 0 5-4 9-9 9z" />
-              <path d="M15 9.9c-.3 0-.6-.1-.8-.3C12.1 7.2 11 4.2 11 1c0-.6.4-1 1-1s1 .4 1 1c0 2.7 1 5.3 2.7 7.3.4.4.3 1-.1 1.4-.1.1-.4.2-.6.2z" />
-              <path d="M15 9.9c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4.7-.8 1.3-1.7 1.5-2.7.1-.5.7-.8 1.2-.7.5.1.9.7.7 1.2-.3 1.3-1.1 2.6-2 3.6-.2.2-.5.3-.7.3zM12 24c-2.8 0-5-2.2-5-5 0-3.1 3.1-8 5-8 .6 0 1 .4 1 1 0 .5-.4.9-.9 1-.7.4-3.1 3.6-3.1 6 0 1.7 1.3 3 3 3s3-1.3 3-3c0-.3-.1-.7-.2-1.2-.2-.9-.7-1.9-1.3-2.9-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3.7 1.1 1.3 2.4 1.6 3.5.1.6.2 1.1.2 1.7 0 2.8-2.2 5-5 5z" />
-              <path d="M13.5 17c-.3 0-.6-.1-.8-.3-1.1-1.4-1.7-3-1.7-4.7 0-.6.4-1 1-1s1 .4 1 1c0 1.2.4 2.4 1.2 3.3.4.4.3 1-.1 1.4-.1.2-.4.3-.6.3z" />
-            </svg>
-            <span class="ml-3">Proses Pembakaran</span>
-          </button>
-        </li>
-        <li>
-          <button id="inspeksi-sidebar" type="button" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
-              <g data-name="Layer 2">
-                <path d="m20.71 19.29-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" data-name="search"></path>
-              </g>
-            </svg>
-            <span class="ml-3">Proses Inspeksi</span>
-          </button>
-        </li>
-      </ul>
-    </div>
+  <!-- Full -->
+  <aside id="sidebar-full" class="fixed top-0 left-0 z-40 h-screen pt-28 border-r border-gray-200 w-64 px-4 pb-4 overflow-y-auto bg-gray-300 transition-transform -translate-x-full duration-300 drop-shadow-xl">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" id="house">
+            <path fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M151.99414,207.99263v-48.001a8,8,0,0,0-8-8h-32a8,8,0,0,0-8,8v48.001a8,8,0,0,1-7.999,8l-47.99414.00632a8,8,0,0,1-8.001-8v-92.4604a8,8,0,0,1,2.61811-5.91906l79.9945-72.73477a8,8,0,0,1,10.76339-.00036l80.0055,72.73509A8,8,0,0,1,216,115.53887V207.999a8,8,0,0,1-8.001,8l-48.00586-.00632A8,8,0,0,1,151.99414,207.99263Z"></path>
+          </svg>
+          <span class="ml-3">Home</span>
+        </a>
+      </li>
+      <li>
+        <button id="pembakaran-sidebar" type="button" class="flex w-full items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
+            <path d="M12 24c-5 0-9-4-9-9 0-4 2.4-8.2 3.4-9.8C7 4.3 9.8 0 12 0c.6 0 1 .4 1 1s-.4 1-1 1c-1.4.2-7 7.4-7 13 0 3.9 3.1 7 7 7s7-3.1 7-7c0-.8-.1-1.6-.3-2.6-.5-1.9-1.4-4.1-2.7-6.1-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3 1.4 2.2 2.4 4.6 3 6.7.2 1.1.3 2.2.3 3.1 0 5-4 9-9 9z" />
+            <path d="M15 9.9c-.3 0-.6-.1-.8-.3C12.1 7.2 11 4.2 11 1c0-.6.4-1 1-1s1 .4 1 1c0 2.7 1 5.3 2.7 7.3.4.4.3 1-.1 1.4-.1.1-.4.2-.6.2z" />
+            <path d="M15 9.9c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4.7-.8 1.3-1.7 1.5-2.7.1-.5.7-.8 1.2-.7.5.1.9.7.7 1.2-.3 1.3-1.1 2.6-2 3.6-.2.2-.5.3-.7.3zM12 24c-2.8 0-5-2.2-5-5 0-3.1 3.1-8 5-8 .6 0 1 .4 1 1 0 .5-.4.9-.9 1-.7.4-3.1 3.6-3.1 6 0 1.7 1.3 3 3 3s3-1.3 3-3c0-.3-.1-.7-.2-1.2-.2-.9-.7-1.9-1.3-2.9-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3.7 1.1 1.3 2.4 1.6 3.5.1.6.2 1.1.2 1.7 0 2.8-2.2 5-5 5z" />
+            <path d="M13.5 17c-.3 0-.6-.1-.8-.3-1.1-1.4-1.7-3-1.7-4.7 0-.6.4-1 1-1s1 .4 1 1c0 1.2.4 2.4 1.2 3.3.4.4.3 1-.1 1.4-.1.2-.4.3-.6.3z" />
+          </svg>
+          <span class="ml-3">Proses Pembakaran</span>
+        </button>
+      </li>
+      <li>
+        <button id="inspeksi-sidebar" type="button" class="flex w-full items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
+            <g data-name="Layer 2">
+              <path d="m20.71 19.29-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" data-name="search"></path>
+            </g>
+          </svg>
+          <span class="ml-3">Proses Inspeksi</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
 
-    <!-- Partial -->
-    <div id="sidebar-partial" class="h-full w-20 px-3 pb-4 overflow-y-auto bg-gray-300">
-      <ul class="space-y-2 font-medium">
-        <li>
-          <a href="#" class="flex items-center px-2 py-2 rounded-lg hover:bg-gray-200 justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" id="house">
-              <path fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M151.99414,207.99263v-48.001a8,8,0,0,0-8-8h-32a8,8,0,0,0-8,8v48.001a8,8,0,0,1-7.999,8l-47.99414.00632a8,8,0,0,1-8.001-8v-92.4604a8,8,0,0,1,2.61811-5.91906l79.9945-72.73477a8,8,0,0,1,10.76339-.00036l80.0055,72.73509A8,8,0,0,1,216,115.53887V207.999a8,8,0,0,1-8.001,8l-48.00586-.00632A8,8,0,0,1,151.99414,207.99263Z"></path>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <!-- Partial -->
+  <aside id="sidebar-partial" class="fixed top-0 left-0 z-30 h-screen pt-28 border-r border-gray-200 w-20 px-4 pb-4 overflow-y-auto bg-gray-300 transition-transform">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="#" class="flex items-center px-2 py-2 rounded-lg hover:bg-gray-200 justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" id="house">
+            <path fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M151.99414,207.99263v-48.001a8,8,0,0,0-8-8h-32a8,8,0,0,0-8,8v48.001a8,8,0,0,1-7.999,8l-47.99414.00632a8,8,0,0,1-8.001-8v-92.4604a8,8,0,0,1,2.61811-5.91906l79.9945-72.73477a8,8,0,0,1,10.76339-.00036l80.0055,72.73509A8,8,0,0,1,216,115.53887V207.999a8,8,0,0,1-8.001,8l-48.00586-.00632A8,8,0,0,1,151.99414,207.99263Z"></path>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <button id="pembakaran-sidebar-icon" type="button" class="flex items-center px-2 py-2 rounded-lg hover:bg-gray-200 justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
+            <path d="M12 24c-5 0-9-4-9-9 0-4 2.4-8.2 3.4-9.8C7 4.3 9.8 0 12 0c.6 0 1 .4 1 1s-.4 1-1 1c-1.4.2-7 7.4-7 13 0 3.9 3.1 7 7 7s7-3.1 7-7c0-.8-.1-1.6-.3-2.6-.5-1.9-1.4-4.1-2.7-6.1-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3 1.4 2.2 2.4 4.6 3 6.7.2 1.1.3 2.2.3 3.1 0 5-4 9-9 9z" />
+            <path d="M15 9.9c-.3 0-.6-.1-.8-.3C12.1 7.2 11 4.2 11 1c0-.6.4-1 1-1s1 .4 1 1c0 2.7 1 5.3 2.7 7.3.4.4.3 1-.1 1.4-.1.1-.4.2-.6.2z" />
+            <path d="M15 9.9c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4.7-.8 1.3-1.7 1.5-2.7.1-.5.7-.8 1.2-.7.5.1.9.7.7 1.2-.3 1.3-1.1 2.6-2 3.6-.2.2-.5.3-.7.3zM12 24c-2.8 0-5-2.2-5-5 0-3.1 3.1-8 5-8 .6 0 1 .4 1 1 0 .5-.4.9-.9 1-.7.4-3.1 3.6-3.1 6 0 1.7 1.3 3 3 3s3-1.3 3-3c0-.3-.1-.7-.2-1.2-.2-.9-.7-1.9-1.3-2.9-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3.7 1.1 1.3 2.4 1.6 3.5.1.6.2 1.1.2 1.7 0 2.8-2.2 5-5 5z" />
+            <path d="M13.5 17c-.3 0-.6-.1-.8-.3-1.1-1.4-1.7-3-1.7-4.7 0-.6.4-1 1-1s1 .4 1 1c0 1.2.4 2.4 1.2 3.3.4.4.3 1-.1 1.4-.1.2-.4.3-.6.3z" />
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button id="inspeksi-sidebar-icon" type="button" class="flex items-center px-2 py-2 rounded-lg hover:bg-gray-200 justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
+            <g data-name="Layer 2">
+              <path d="m20.71 19.29-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" data-name="search"></path>
+            </g>
+          </svg>
+        </button>
+      </li>
+    </ul>
   </aside>
 
   <!-- Content -->
@@ -146,39 +171,55 @@
                   <div class="grid items-center justify-center absolute left-0 top-0 bg-green-400 w-fit py-1 px-1 text-white border-2 border-green-500 text-3xs">Kualitas 1</div>
                   <div class="grid items-center justify-center absolute right-0 top-0 bg-yellow-400 w-fit py-1 px-1 text-white border-2 border-yellow-500 text-3xs">Kualitas 2</div>
                   <div class="grid items-center justify-center absolute right-0 top-0 mt-8 bg-red-400 w-fit py-1 px-1 text-white border-2 border-red-500 text-3xs">Kualitas 3</div>
-                  <button type="button" id="inspeksi-btn" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-green-600 hover:bg-green-600">Area Inspeksi & Pengecatan
-                    <span id="inspeksi-card" class="popover-card popover-default text-sm text-gray-600 rounded-lg shadow-xl">
-                      <div class="px-4 py-2 rounded-t-lg bg-gray-700">
-                        <h3 class="font-semibold text-white text-xs">Proses Inspeksi</h3>
-                      </div>
-                      <div class="px-4 py-2 text-xs">
-                        <span class="hidden" id="genteng-id"></span>
-                        <p>Tanggal Produksi: <span id="genteng-cekwaktu"></span></p>
-                        <p>Total Produksi: <span id="genteng-total"></span></p>
-                        <h4 class="font-bold py-2">Hasil Produksi</h4>
-                        <p>Kualitas 1 : <span id="genteng-bagus"></span></p>
-                        <p>Kualitas 2 : <span id="genteng-batuputih"></span></p>
-                        <p>Kualitas 3 : <span id="genteng-rusak"></span></p>
-                      </div>
-                    </span>
+
+                  <button type="button" id="inspeksi-btn" data-template="inspeksi-card" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-green-600 hover:bg-green-600">Area Inspeksi & Pengecatan
+
                   </button>
                 </div>
 
-                <button type="button" id="pembakaran-btn" class="grid relative items-center justify-center w-full h-full row-span-4 text-white border-b-2 border-r-2 border-green-600 bg-green-500 hover:bg-green-600">
+                <button type="button" id="pembakaran-btn" data-template="pembakaran-card" class="grid relative items-center justify-center w-full h-full row-span-4 text-white border-b-2 border-r-2 border-green-600 bg-green-500 hover:bg-green-600">
                   Proses Pembakaran
-                  <span id="pembakaran-card" class="popover-card popover-default text-sm text-gray-600 rounded-lg shadow-xl">
-                    <div class="px-4 py-2 rounded-t-lg bg-gray-700">
-                      <h3 class="font-semibold text-white text-xs">Proses Pembakaran</h3>
-                    </div>
-                    <div class="px-4 py-2 text-xs">
-                      <span class="hidden" id="id"></span>
-                      <p>Tanggal: <span id="cekwaktu"></span></p>
-                      <h4 class="font-bold py-2">Suhu Pembakaran</h4>
-                      <p>Celcius : <span id="ceksuhucel"></span> °C</p>
-                      <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>
-                    </div>
-                  </span>
                 </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popover -->
+        <div id="pembakaran-card" style="display: none;">
+          <div data-tippy-root>
+            <div class="popover">
+              <div class="tippy-content">
+                <h3 class="font-bold text-sm">Proses Pembakaran</h3>
+                <div class="h-[1px] bg-gray-300 my-3"></div>
+                <div class="text-xs">
+                  <span class="hidden" id="id"></span>
+                  <p>Tanggal: <span id="cekwaktu"></span></p>
+                  <h4 class="font-bold py-2">Suhu Pembakaran</h4>
+                  <p>Celcius : <span id="ceksuhucel"></span> °C</p>
+                  <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="inspeksi-card" style="display: none;">
+          <div data-tippy-root>
+            <div class="popover">
+              <div class="tippy-content">
+                <h3 class="font-bold text-sm">Proses Inspeksi</h3>
+                <div class="h-[1px] bg-gray-300 my-3"></div>
+                <div class="text-xs">
+                  <span class="hidden" id="genteng-id"></span>
+                  <p>Tanggal Produksi: <span id="genteng-cekwaktu"></span></p>
+                  <p class="font-bold">Total Produksi: <span id="genteng-total"></span></p>
+                  <h4 class="font-bold py-2">Hasil Produksi</h4>
+                  <p>Kualitas 1 : <span id="genteng-bagus"></span></p>
+                  <p>Kualitas 2 : <span id="genteng-batuputih"></span></p>
+                  <p>Kualitas 3 : <span id="genteng-rusak"></span></p>
+                </div>
               </div>
             </div>
           </div>
