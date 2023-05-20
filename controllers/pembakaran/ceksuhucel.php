@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('../config.php');
 
 //buatlah koneksi ke database
 $konek = mysqli_connect(
@@ -14,10 +14,10 @@ $sql = mysqli_query($konek, "SELECT * from suhu_pembakaran order by id desc"); /
 
 //baca data paling atas
 $data = mysqli_fetch_array($sql);
-$suhufah = $data['suhufah'];
+$suhucel = $data['suhucel'];
 
-//uji, apabila bila suhufah belum ada, maka anggap suhufah = 0
-if ($suhufah < 0) $suhufah = 0;
+//uji, apabila bila suhucel belum ada, maka anggap suhucel = 0
+if ($suhucel < 0) $suhucel = 0;
 
-//cetak nilai suhufah
-echo $suhufah;
+//cetak nilai suhucel
+echo $suhucel;

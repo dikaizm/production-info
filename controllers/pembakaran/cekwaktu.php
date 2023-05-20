@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('../config.php');
 
 //buatlah koneksi ke database
 $konek = mysqli_connect(
@@ -14,10 +14,13 @@ $sql = mysqli_query($konek, "SELECT * from suhu_pembakaran order by id desc"); /
 
 //baca data paling atas
 $data = mysqli_fetch_array($sql);
-$suhucel = $data['suhucel'];
+$waktu = $data['waktu'];
 
-//uji, apabila bila suhucel belum ada, maka anggap suhucel = 0
-if ($suhucel < 0) $suhucel = 0;
+//uji, apabila bila waktu belum ada, maka anggap waktu = 0
+if ($waktu < 0) $waktu = 0;
 
-//cetak nilai suhucel
-echo $suhucel;
+//reformat waktu ke format yang diinginkan
+$response = date("l, j F Y", strtotime($waktu));
+
+//cetak nilai waktu yang diformat
+echo $response;

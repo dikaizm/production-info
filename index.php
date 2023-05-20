@@ -14,9 +14,6 @@
   <script src="https://unpkg.com/popper.js@1"></script>
   <script src="https://unpkg.com/tippy.js@5"></script>
 
-  <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />
-  <link rel="stylesheet" href="https://unpkg.com/tippy.js/dist/themes/light.css" />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -46,7 +43,7 @@
     </div>
   </nav>
 
-  <!-- Full -->
+  <!-- Sidebar Full -->
   <aside id="sidebar-full" class="fixed top-0 left-0 z-40 h-screen pt-28 border-r border-gray-200 w-64 px-4 pb-4 overflow-y-auto bg-gray-300 transition-transform -translate-x-full duration-300 drop-shadow-xl">
     <ul class="space-y-2 font-medium">
       <li>
@@ -81,7 +78,7 @@
     </ul>
   </aside>
 
-  <!-- Partial -->
+  <!-- Sidebar Partial -->
   <aside id="sidebar-partial" class="fixed top-0 left-0 z-30 h-screen pt-28 border-r border-gray-200 w-20 px-4 pb-4 overflow-y-auto bg-gray-300 transition-transform">
     <ul class="space-y-2 font-medium">
       <li>

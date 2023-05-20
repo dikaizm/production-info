@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
         $("#genteng-rusak").load("controllers/inspeksi/gentengrusak.php");
 
         // Cek suhu
-        $("#id").load("controllers/id.php");
-        $("#ceksuhucel").load("controllers/ceksuhucel.php");
-        $("#ceksuhufah").load("controllers/ceksuhufah.php");
-        $("#cekwaktu").load("controllers/cekwaktu.php");
+        $("#id").load("controllers/pembakaran/id.php");
+        $("#ceksuhucel").load("controllers/pembakaran/ceksuhucel.php");
+        $("#ceksuhufah").load("controllers/pembakaran/ceksuhufah.php");
+        $("#cekwaktu").load("controllers/pembakaran/cekwaktu.php");
     }, 1000);
 
     // Popover tippyjs
