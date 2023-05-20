@@ -12,7 +12,7 @@
 
   <!-- Tippy js -->
   <script src="https://unpkg.com/popper.js@1"></script>
-  <script src="https://unpkg.com/tippy.js@5"></script>
+  <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -90,7 +90,7 @@
       </li>
       <li>
         <button id="pembakaran-sidebar-icon" type="button" class="flex items-center px-2 py-2 rounded-lg hover:bg-gray-200 justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
             <path d="M12 24c-5 0-9-4-9-9 0-4 2.4-8.2 3.4-9.8C7 4.3 9.8 0 12 0c.6 0 1 .4 1 1s-.4 1-1 1c-1.4.2-7 7.4-7 13 0 3.9 3.1 7 7 7s7-3.1 7-7c0-.8-.1-1.6-.3-2.6-.5-1.9-1.4-4.1-2.7-6.1-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3 1.4 2.2 2.4 4.6 3 6.7.2 1.1.3 2.2.3 3.1 0 5-4 9-9 9z" />
             <path d="M15 9.9c-.3 0-.6-.1-.8-.3C12.1 7.2 11 4.2 11 1c0-.6.4-1 1-1s1 .4 1 1c0 2.7 1 5.3 2.7 7.3.4.4.3 1-.1 1.4-.1.1-.4.2-.6.2z" />
             <path d="M15 9.9c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4.7-.8 1.3-1.7 1.5-2.7.1-.5.7-.8 1.2-.7.5.1.9.7.7 1.2-.3 1.3-1.1 2.6-2 3.6-.2.2-.5.3-.7.3zM12 24c-2.8 0-5-2.2-5-5 0-3.1 3.1-8 5-8 .6 0 1 .4 1 1 0 .5-.4.9-.9 1-.7.4-3.1 3.6-3.1 6 0 1.7 1.3 3 3 3s3-1.3 3-3c0-.3-.1-.7-.2-1.2-.2-.9-.7-1.9-1.3-2.9-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3.7 1.1 1.3 2.4 1.6 3.5.1.6.2 1.1.2 1.7 0 2.8-2.2 5-5 5z" />
@@ -100,7 +100,7 @@
       </li>
       <li>
         <button id="inspeksi-sidebar-icon" type="button" class="flex items-center px-2 py-2 rounded-lg hover:bg-gray-200 justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
             <g data-name="Layer 2">
               <path d="m20.71 19.29-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" data-name="search"></path>
             </g>
@@ -113,6 +113,8 @@
   <!-- Content -->
   <main class="min-h-[calc(100vh-64px)] pt-40 ml-14">
     <div class="grid relative place-items-center">
+
+      <button type="button" value="export excel" onclick="window.open('controllers/export_excel.php')">Export excel</button>
 
       <div class="grid relative">
         <!-- Group 1 -->
@@ -190,13 +192,18 @@
               <div class="tippy-content">
                 <h3 class="font-bold text-sm">Proses Pembakaran</h3>
                 <div class="h-[1px] bg-gray-300 my-3"></div>
-                <div class="text-xs">
+                <div class="text-xs text-left">
                   <span class="hidden" id="id"></span>
                   <p>Tanggal: <span id="cekwaktu"></span></p>
                   <h4 class="font-bold py-2">Suhu Pembakaran</h4>
                   <p>Celcius : <span id="ceksuhucel"></span> °C</p>
                   <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>
                 </div>
+                <button
+                  type="button"
+                  onclick="window.open('controllers/pembakaran/export_excel.php')"
+                  class="bg-gray-700 w-full px-2 py-2 mt-4 text-xs rounded-lg text-white font-semibold"
+                  >Lihat semua data</button>
               </div>
             </div>
           </div>
@@ -208,7 +215,7 @@
               <div class="tippy-content">
                 <h3 class="font-bold text-sm">Proses Inspeksi</h3>
                 <div class="h-[1px] bg-gray-300 my-3"></div>
-                <div class="text-xs">
+                <div class="text-xs text-left">
                   <span class="hidden" id="genteng-id"></span>
                   <p>Tanggal Produksi: <span id="genteng-cekwaktu"></span></p>
                   <p class="font-bold">Total Produksi: <span id="genteng-total"></span></p>
@@ -217,6 +224,11 @@
                   <p>Kualitas 2 : <span id="genteng-batuputih"></span></p>
                   <p>Kualitas 3 : <span id="genteng-rusak"></span></p>
                 </div>
+                <button
+                  type="button"
+                  onclick="window.open('controllers/inspeksi/export_excel.php')"
+                  class="bg-gray-700 w-full px-2 py-2 mt-4 text-xs rounded-lg text-white font-semibold"
+                  >Lihat semua data</button>
               </div>
             </div>
           </div>

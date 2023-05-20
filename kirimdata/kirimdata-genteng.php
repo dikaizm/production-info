@@ -14,8 +14,8 @@ if (!$konek) {
 }
 
 //baca data dari esp32
-$sisi_1 = $_POST['sisi_1'];
-$sisi_2 = $_POST['sisi_2'];
+$sisi_1 = $_POST['category_name'];
+$sisi_2 = $_POST['category_name'];
 
 if ($sisi_2 == '') {
 	$sisi_2 = $sisi_1;

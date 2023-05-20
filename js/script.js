@@ -50,8 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     tippy('#pembakaran-btn', {
         content: 'Loading...',
-        allowHTML: true,
         theme: 'popover',
+        allowHTML: true,
+        interactive: true,
         arrow: true,
         trigger: 'click',
         flipOnUpdate: true,
@@ -67,8 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     tippy('#inspeksi-btn', {
         content: 'Loading...',
-        allowHTML: true,
         theme: 'popover',
+        allowHTML: true,
+        interactive: true,
         arrow: true,
         trigger: 'click',
         flipOnUpdate: true,
