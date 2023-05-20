@@ -2,10 +2,10 @@
 
 require('cekgenteng.php');
 
-if ($result['rusak'] == 0) {
+if ($result['kualitas_1'] == 0) {
     $response = 'Tidak ada';
 } else {
-    $response = $result['rusak'];
+    $response = $result['kualitas_1'];
 }
 
 echo $response;

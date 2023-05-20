@@ -19,17 +19,17 @@ if (!$konek) {
 
 while (true) {
 	//baca data dari virtual generator
-	$sisi_1 = ['rusak', 'batu putih', 'bagus'][array_rand(['rusak', 'batu putih', 'bagus'])];
-	$sisi_2 = ['rusak', 'batu putih', 'bagus'][array_rand(['rusak', 'batu putih', 'bagus'])];
+	$sisi_1 = ['retak', 'batu putih', 'bagus'][array_rand(['retak', 'batu putih', 'bagus'])];
+	$sisi_2 = ['retak', 'batu putih', 'bagus'][array_rand(['retak', 'batu putih', 'bagus'])];
 
 	if ($sisi_2 == '') {
 		$sisi_2 = $sisi_1;
 	} elseif ($sisi_1 == '') {
 		$sisi_1 = $sisi_2;
 	}
-	
+
 	switch ($sisi_1) {
-		case 'rusak':
+		case 'retak':
 			$sisi_1_id = 3;
 			break;
 		case 'batu putih':
@@ -41,7 +41,7 @@ while (true) {
 	}
 
 	switch ($sisi_2) {
-		case 'rusak':
+		case 'retak':
 			$sisi_2_id = 3;
 			break;
 		case 'batu putih':
@@ -52,15 +52,26 @@ while (true) {
 			break;
 	}
 
+	if ($sisi_1_id == 3 || $sisi_2_id == 3) {
+		$kualitas = 'kualitas 3';
+		$kualitas_id = 3;
+	} elseif ($sisi_1_id == 2 || $sisi_2_id == 2) {
+		$kualitas = 'kualitas 2';
+		$kualitas_id = 2;
+	} elseif ($sisi_1_id == 1 && $sisi_2_id == 1) {
+		$kualitas = 'kualitas 1';
+		$kualitas_id = 1;
+	}
+
 	//simpan ke tabel hasil_inspeksi
 
 	//auto increment = 1
 	mysqli_query($konek, "ALTER TABLE hasil_inspeksi AUTO_INCREMENT=1");
 	//simpan data sensor ke tabel hasil_inspeksi
-	$simpan = mysqli_query($konek, "INSERT INTO hasil_inspeksi (sisi_1, sisi_1_id, sisi_2, sisi_2_id) VALUES ('$sisi_1', '$sisi_1_id', '$sisi_2', '$sisi_2_id')");
+	$simpan = mysqli_query($konek, "INSERT INTO hasil_inspeksi (sisi_1, sisi_2, kualitas, kualitas_id) VALUES ('$sisi_1', '$sisi_2', '$kualitas', '$kualitas_id')");
 
 	//uji simpan untuk memberi respon
-	echo $simpan ? "Berhasil dikirim" : "Gagal Terkirim";
+	echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";
 
 	sleep(2);
 }

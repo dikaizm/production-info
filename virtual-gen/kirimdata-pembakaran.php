@@ -31,7 +31,7 @@ while (true) {
 	$simpan = mysqli_query($konek, "INSERT INTO suhu_pembakaran (suhucel, suhufah) VALUES ('$suhucel', '$suhufah')");
 
 	//uji simpan untuk memberi respon
-	echo $simpan ? "Berhasil dikirim" : "Gagal Terkirim";
+	echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";
 
 	sleep(2);
 }

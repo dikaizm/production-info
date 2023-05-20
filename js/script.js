@@ -7,8 +7,18 @@ function toggleSidebar() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    var scrollContainer = $('#scroll-container');
+
+    // Calculate the middle position
+    var middlePosition = scrollContainer[0].scrollWidth / 2 - scrollContainer.outerWidth() / 1.35;
+
+    // Set the scroll position to the middle
+    scrollContainer.scrollLeft(middlePosition);
+
+    // Sidebar
     $('#sidebar-btn').on('click', toggleSidebar);
-    
+
+    // Popover interaction
     $('#inspeksi-sidebar').on('click', function () {
         $('#inspeksi-btn').click();
     })
@@ -35,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $("#genteng-total").load("controllers/inspeksi/gentengtotal.php");
         $("#genteng-bagus").load("controllers/inspeksi/gentengbagus.php");
         $("#genteng-batuputih").load("controllers/inspeksi/gentengbatuputih.php");
-        $("#genteng-rusak").load("controllers/inspeksi/gentengrusak.php");
+        $("#genteng-retak").load("controllers/inspeksi/gentengretak.php");
 
         // Cek suhu
         $("#id").load("controllers/pembakaran/id.php");
