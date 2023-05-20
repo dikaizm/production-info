@@ -42,7 +42,7 @@
   </nav>
 
   <!-- Tab bar mobile -->
-  <nav class="fixed bottom-0 z-50 w-full bg-gray-300 border-t border-gray-200 block sm:hidden">
+  <nav class="fixed bottom-0 z-50 w-full bg-gray-300 border-t border-gray-200 block sm:hidden mb-8">
     <div class="flex h-16 justify-center items-center">
       <ul class="flex gap-10">
         <li>
@@ -284,10 +284,10 @@
 
   <!-- Footer -->
   <footer class="fixed bottom-0 w-full">
-    <div class="h-16 bg-gray-800 items-center justify-center hidden sm:grid">
-      <div class="flex gap-x-2">
-        <p class="text-neutral-200">© 2022</p>
-        <p class="text-neutral-400">S1 Teknik Industri - Universitas Telkom</p>
+    <div class="h-8 sm:h-16 bg-gray-200 sm:bg-gray-800 items-center justify-center grid">
+      <div class="flex gap-x-2 text-xs sm:text-base">
+        <p class="text-neutral-500 sm:text-neutral-200">© 2022</p>
+        <p class="text-neutral-400 sm:text-neutral-400">S1 Teknik Industri - Universitas Telkom</p>
       </div>
     </div>
   </footer>
