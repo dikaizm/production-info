@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Production Information System</title>
 
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" type="text/javascript"></script>
@@ -53,7 +53,7 @@
           </a>
         </li>
         <li>
-          <button id="pembakaran-sidebar-icon" type="button" class="flex items-center px-3 py-3 rounded-lg hover:bg-gray-200 justify-center">
+          <button id="pembakaran-tabbar" type="button" class="flex items-center px-3 py-3 rounded-lg hover:bg-gray-200 justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="house" fill="#666" class="pl-1 pt-1">
               <path d="M12 24c-5 0-9-4-9-9 0-4 2.4-8.2 3.4-9.8C7 4.3 9.8 0 12 0c.6 0 1 .4 1 1s-.4 1-1 1c-1.4.2-7 7.4-7 13 0 3.9 3.1 7 7 7s7-3.1 7-7c0-.8-.1-1.6-.3-2.6-.5-1.9-1.4-4.1-2.7-6.1-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3 1.4 2.2 2.4 4.6 3 6.7.2 1.1.3 2.2.3 3.1 0 5-4 9-9 9z" />
               <path d="M15 9.9c-.3 0-.6-.1-.8-.3C12.1 7.2 11 4.2 11 1c0-.6.4-1 1-1s1 .4 1 1c0 2.7 1 5.3 2.7 7.3.4.4.3 1-.1 1.4-.1.1-.4.2-.6.2z" />
@@ -63,7 +63,7 @@
           </button>
         </li>
         <li>
-          <button id="inspeksi-sidebar-icon" type="button" class="flex items-center px-3 py-3 rounded-lg hover:bg-gray-200 justify-center">
+          <button id="inspeksi-tabbar" type="button" class="flex items-center px-3 py-3 rounded-lg hover:bg-gray-200 justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="pl-1 pt-1" id="search">
               <g data-name="Layer 2">
                 <path d="m20.71 19.29-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" data-name="search"></path>
@@ -143,8 +143,8 @@
   </aside>
 
   <!-- Content -->
-  <main id="scroll-container" class="min-h-[calc(100vh-64px)] pt-40 sm:ml-14 overflow-x-auto">
-    <div class="grid relative place-items-center">
+  <main id="scroll-container" class="min-h-[calc(100vh-64px)] pt-40 sm:ml-20 overflow-x-auto">
+    <div class="grid relative place-items-center px-4">
 
       <div class="grid relative">
         <!-- Group 1 -->
@@ -188,6 +188,7 @@
               <div class="map-flex border-2 w-48 h-24 text-center">
                 Penyimpanan Bahan Baku
               </div>
+              <div class="w-4"></div>
             </div>
 
             <!-- Row 2 -->
@@ -220,16 +221,22 @@
           <div data-tippy-root>
             <div class="popover">
               <div class="tippy-content">
-                <h3 class="font-bold text-sm">Proses Pembakaran</h3>
+                <h3 class="font-bold text-base">Proses Pembakaran</h3>
                 <div class="h-[1px] bg-gray-300 my-3"></div>
-                <div class="text-xs text-left">
+                <div class="text-sm text-left">
                   <span class="hidden" id="id"></span>
                   <p>Tanggal: <span id="cekwaktu"></span></p>
                   <h4 class="font-bold py-2">Suhu Pembakaran</h4>
                   <p>Celcius : <span id="ceksuhucel"></span> °C</p>
                   <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>
                 </div>
-                <button type="button" onclick="window.open('controllers/pembakaran/export_excel.php')" class="bg-gray-700 w-full px-2 py-2 mt-4 text-xs rounded-lg text-white font-semibold">Lihat semua data</button>
+
+                <button type="button" class="flex items-center justify-between w-full p-2 mt-4 text-sm text-white font-semibold rounded-lg bg-gray-700 hover:bg-gray-800" onclick="window.open('controllers/pembakaran/export_excel.php')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" id="download">
+                    <path fill="#fff" d="M12 4a1 1 0 0 0-1 1v9.529l-4.218-4.223a1.043 1.043 0 0 0-1.476 0 1.046 1.046 0 0 0 0 1.478l5.904 5.91c.217.217.506.319.79.305.284.014.573-.088.79-.305l5.904-5.91a1.046 1.046 0 0 0 0-1.478 1.043 1.043 0 0 0-1.476 0L13 14.529V5a1 1 0 0 0-1-1zM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"></path>
+                  </svg>
+                  <span class="px-3 flex-grow text-center">Lihat semua data</span>
+                </button>
               </div>
             </div>
           </div>
@@ -239,9 +246,9 @@
           <div data-tippy-root>
             <div class="popover">
               <div class="tippy-content">
-                <h3 class="font-bold text-sm">Proses Inspeksi</h3>
+                <h3 class="font-bold text-base">Proses Inspeksi</h3>
                 <div class="h-[1px] bg-gray-300 my-3"></div>
-                <div class="text-xs text-left">
+                <div class="text-sm text-left">
                   <span class="hidden" id="genteng-id"></span>
                   <p>Tanggal Produksi: <span id="genteng-cekwaktu"></span></p>
                   <p class="font-bold">Total Produksi: <span id="genteng-total"></span></p>
@@ -250,7 +257,12 @@
                   <p>Kualitas 2 : <span id="genteng-batuputih"></span></p>
                   <p>Kualitas 3 : <span id="genteng-retak"></span></p>
                 </div>
-                <button type="button" onclick="window.open('controllers/inspeksi/export_excel.php')" class="bg-gray-700 w-full px-2 py-2 mt-4 text-xs rounded-lg text-white font-semibold">Lihat semua data</button>
+                <button type="button" class="flex items-center justify-between w-full p-2 mt-4 text-sm text-white font-semibold rounded-lg bg-gray-700 hover:bg-gray-800" onclick="window.open('controllers/inspeksi/export_excel.php')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" id="download">
+                    <path fill="#fff" d="M12 4a1 1 0 0 0-1 1v9.529l-4.218-4.223a1.043 1.043 0 0 0-1.476 0 1.046 1.046 0 0 0 0 1.478l5.904 5.91c.217.217.506.319.79.305.284.014.573-.088.79-.305l5.904-5.91a1.046 1.046 0 0 0 0-1.478 1.043 1.043 0 0 0-1.476 0L13 14.529V5a1 1 0 0 0-1-1zM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"></path>
+                  </svg>
+                  <span class="px-3 flex-grow text-center">Lihat semua data</span>
+                </button>
               </div>
             </div>
           </div>

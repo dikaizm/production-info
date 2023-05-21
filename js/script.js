@@ -7,18 +7,16 @@ function toggleSidebar() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var scrollContainer = $('#scroll-container');
-
-    // Calculate the middle position
-    var middlePosition = scrollContainer[0].scrollWidth / 2 - scrollContainer.outerWidth() / 1.35;
-
     // Set the scroll position to the middle
+    var scrollContainer = $('#scroll-container');
+    var middlePosition = scrollContainer[0].scrollWidth / 2 - scrollContainer.outerWidth() / 1.35;
     scrollContainer.scrollLeft(middlePosition);
 
     // Sidebar
     $('#sidebar-btn').on('click', toggleSidebar);
 
     // Popover interaction
+    // Sidebar full
     $('#inspeksi-sidebar').on('click', function () {
         $('#inspeksi-btn').click();
     })
@@ -26,10 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#pembakaran-btn').click();
     })
 
+    // Sidebar partial
     $('#inspeksi-sidebar-icon').on('click', function () {
         $('#inspeksi-btn').click();
     })
     $('#pembakaran-sidebar-icon').on('click', function () {
+        $('#pembakaran-btn').click();
+    })
+
+    // Tabbar mobile
+    $('#inspeksi-tabbar').on('click', function () {
+        $('#inspeksi-btn').click();
+    })
+    $('#pembakaran-tabbar').on('click', function () {
         $('#pembakaran-btn').click();
     })
 
