@@ -13,61 +13,45 @@ if (!$konek) {
 	die("Connection failed: " . mysqli_connect_error());
 }
 
-while (true) {
-	//baca data dari esp32
-	$sisi_1 = $_POST['category_name'];
-	$sisi_2 = $_POST['category_name'];
+//baca data dari esp32
+$sisi_1 = $_POST['category_name1'];
+$sisi_2 = $_POST['category_name2'];
 
-	if ($sisi_2 == '') {
-		$sisi_2 = $sisi_1;
-	} elseif ($sisi_1 == '') {
-		$sisi_1 = $sisi_2;
-	}
-
-	switch ($sisi_1) {
-		case 'retak':
-			$sisi_1_id = 3;
-			break;
-		case 'batu putih':
-			$sisi_1_id = 2;
-			break;
-		case 'bagus':
-			$sisi_1_id = 1;
-			break;
-	}
-
-	switch ($sisi_2) {
-		case 'retak':
-			$sisi_2_id = 3;
-			break;
-		case 'batu putih':
-			$sisi_2_id = 2;
-			break;
-		case 'bagus':
-			$sisi_2_id = 1;
-			break;
-	}
-
-	if ($sisi_1_id == 3 || $sisi_2_id == 3) {
-		$kualitas = 'kualitas 3';
-		$kualitas_id = 3;
-	} elseif ($sisi_1_id == 2 || $sisi_2_id == 2) {
-		$kualitas = 'kualitas 2';
-		$kualitas_id = 2;
-	} elseif ($sisi_1_id == 1 && $sisi_2_id == 1) {
-		$kualitas = 'kualitas 1';
-		$kualitas_id = 1;
-	}
-
-	//simpan ke tabel hasil_inspeksi
+if ($sisi_2 == '' || $sisi_2 == null) {
+	$sisi_2 = "";
+	$kualitas = "";
+	$kualitas_id = null;
 
 	//auto increment = 1
 	mysqli_query($konek, "ALTER TABLE hasil_inspeksi AUTO_INCREMENT=1");
 	//simpan data sensor ke tabel hasil_inspeksi
 	$simpan = mysqli_query($konek, "INSERT INTO hasil_inspeksi (sisi_1, sisi_2, kualitas, kualitas_id) VALUES ('$sisi_1', '$sisi_2', '$kualitas', '$kualitas_id')");
 
-	//uji simpan untuk memberi respon
-	echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";
+	echo $simpan ? "Berhasil dikirim sisi_1 | " : "Gagal Terkirim sisi_1 | ";
+} else if ($sisi_1 == '' || $sisi_1 == null) {
+	$sql = mysqli_query($konek, "SELECT sisi_1 FROM hasil_inspeksi ORDER BY id DESC");
+	$data = mysqli_fetch_array($sql);
+	$sisi_1 = $data['sisi_1'];
 
-	sleep(2);
+	if ($sisi_2 == '' || $sisi_2 == null) {
+		$sisi_2 = $sisi_1;
+	} elseif ($sisi_1 == '' || $sisi_1 == null) {
+		$sisi_1 = $sisi_2;
+	}
+
+	if ($sisi_1 == 'retak' || $sisi_2 == 'retak') {
+		$kualitas = 'kualitas 3';
+		$kualitas_id = 3;
+	} elseif ($sisi_1 == 'batu putih' || $sisi_2 == 'batu putih') {
+		$kualitas = 'kualitas 2';
+		$kualitas_id = 2;
+	} elseif ($sisi_1 == 'bagus' && $sisi_2 == 'bagus') {
+		$kualitas = 'kualitas 1';
+		$kualitas_id = 1;
+	}
+
+	//simpan data sensor ke tabel hasil_inspeksi
+	$simpan = mysqli_query($konek, "UPDATE hasil_inspeksi SET sisi_2 = '$sisi_2', kualitas = '$kualitas', kualitas_id = '$kualitas_id' ORDER BY id DESC LIMIT 1");
+
+	echo $simpan ? "Berhasil dikirim sisi_2 | " : "Gagal Terkirim sisi_2 | ";
 }

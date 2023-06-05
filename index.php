@@ -148,7 +148,11 @@
 
       <div class="grid relative">
         <!-- Group 1 -->
-        <div class="flex ml-16">
+        <div class="flex items-end">
+          <div class="flex h-40 w-40 map-flex border-l-2  border-y-2 text-center">
+           Proses Pembakaran 
+          </div>
+
           <div class="flex flex-none items-center justify-center text-gray-600 relative border-2 border-gray-500 w-36 h-72 text-center font-bold">
             <div class="grid border-y-2 border-l-2 items-center justify-center border-gray-500 absolute right-0 mb-16 w-14 h-14 text-3xs bg-gray-200 z-20">
               Proses Pencetakan
@@ -202,12 +206,12 @@
                   <div class="grid items-center justify-center absolute right-0 top-0 bg-yellow-400 w-fit py-1 px-1 text-white border-2 border-yellow-500 text-3xs">Kualitas 2</div>
                   <div class="grid items-center justify-center absolute right-0 top-0 mt-8 bg-red-400 w-fit py-1 px-1 text-white border-2 border-red-500 text-3xs">Kualitas 3</div>
 
-                  <button type="button" id="inspeksi-btn" data-template="inspeksi-card" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-green-600 hover:bg-green-600">Area Inspeksi & Pengecatan
+                  <button type="button" id="inspeksi-btn" data-template="inspeksi-card" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-red-600 bg-red-500 hover:bg-red-600 transition-all">Area Inspeksi & Pengecatan
 
                   </button>
                 </div>
 
-                <button type="button" id="pembakaran-btn" data-template="pembakaran-card" class="grid relative items-center justify-center w-full h-full row-span-4 text-white border-b-2 border-r-2 border-green-600 bg-green-500 hover:bg-green-600">
+                <button type="button" id="pembakaran-btn" data-template="pembakaran-card" class="grid relative items-center justify-center w-full h-full row-span-4 text-white border-2 border-red-600 bg-red-500 hover:bg-red-600 transition-all">
                   Proses Pembakaran
                 </button>
 
@@ -269,7 +273,7 @@
         </div>
 
         <!-- Group 2 -->
-        <div class="flex gap-x-52 mt-16">
+        <div class="flex gap-x-52 mt-16 ml-24">
           <div class="map-flex border-2 w-52 h-20 text-center">
             Rak Penyimpanan Sementara
           </div>

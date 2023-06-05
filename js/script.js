@@ -9,7 +9,7 @@ function toggleSidebar() {
 document.addEventListener('DOMContentLoaded', function () {
     // Set the scroll position to the middle
     var scrollContainer = $('#scroll-container');
-    var middlePosition = scrollContainer[0].scrollWidth / 2 - scrollContainer.outerWidth() / 1.35;
+    var middlePosition = scrollContainer[0].scrollWidth / 2 - scrollContainer.outerWidth() / 1.65;
     scrollContainer.scrollLeft(middlePosition);
 
     // Sidebar
@@ -44,8 +44,21 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
     });
 
-    // Realtime load pembakaran
+    // Realtime load data
     setInterval(function () {
+        // Box change color
+        $.ajax({
+            url: "controllers/warning.php",
+            success: function (response) {
+                if (response != 0) {
+                    $("#pembakaran-btn, #inspeksi-btn").removeClass('border-red-600 bg-red-500 hover:bg-red-600').addClass('border-green-600 bg-green-500 hover:bg-green-600');
+                } else {
+                    $("#pembakaran-btn, #inspeksi-btn").removeClass('border-green-600 bg-green-500 hover:bg-green-600').addClass('border-red-600 bg-red-500 hover:bg-red-600');
+                }
+            }
+        });
+
+
         // Cek genteng
         $("#genteng-id").load("controllers/inspeksi/gentengid.php");
         $("#genteng-cekwaktu").load("controllers/inspeksi/gentengwaktu.php");
