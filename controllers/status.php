@@ -9,7 +9,7 @@ $konek = mysqli_connect(
 	$config['database']
 );
 
-$sql = mysqli_query($konek, "SELECT * from warning");
+$sql = mysqli_query($konek, "SELECT * from status");
 
 $data = mysqli_fetch_array($sql);
 $status = $data['status'];

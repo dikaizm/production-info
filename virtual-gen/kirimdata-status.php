@@ -16,11 +16,11 @@ if (!$konek) {
 
 while (true) {
 	//baca data dari virtual generator
-	$status = ['nyala', ''][array_rand(['nyala', ''])];
+	$status = ['running', 'cekkamera', 'deviceoff', ''][array_rand(['running', 'cekkamera', 'deviceoff', ''])];
 
-	$delete = mysqli_query($konek, "DELETE FROM warning");
+	$delete = mysqli_query($konek, "DELETE FROM status");
 
-	$simpan = mysqli_query($konek, "INSERT INTO warning (status) VALUES ('$status')");
+	$simpan = mysqli_query($konek, "INSERT INTO status (status) VALUES ('$status')");
 
 	//uji simpan untuk memberi respon
 	echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";

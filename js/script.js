@@ -48,13 +48,20 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(function () {
         // Box change color
         $.ajax({
-            url: "controllers/warning.php",
+            url: "controllers/status.php",
             success: function (response) {
-                if (response != 0) {
+                if (response == 'running') {
                     $("#pembakaran-btn, #inspeksi-btn").removeClass('border-red-600 bg-red-500 hover:bg-red-600').addClass('border-green-600 bg-green-500 hover:bg-green-600');
-                } else {
+
+                    $("#genteng-status").html("Running")
+                } else if (response == 'cekkamera') {
+                    $("#genteng-status").html("Cek kamera")
+                } else if (response == 'deviceoff' || response == 0){
                     $("#pembakaran-btn, #inspeksi-btn").removeClass('border-green-600 bg-green-500 hover:bg-green-600').addClass('border-red-600 bg-red-500 hover:bg-red-600');
+
+                    $("#genteng-status").html("Device off")
                 }
+                console.log(response)
             }
         });
 

@@ -255,6 +255,7 @@
                 <div class="text-sm text-left">
                   <span class="hidden" id="genteng-id"></span>
                   <p>Tanggal Produksi: <span id="genteng-cekwaktu"></span></p>
+                  <p>Status: <span id="genteng-status"></span></p>
                   <p class="font-bold">Total Produksi: <span id="genteng-total"></span></p>
                   <h4 class="font-bold py-2">Hasil Produksi</h4>
                   <p>Kualitas 1 : <span id="genteng-bagus"></span></p>
