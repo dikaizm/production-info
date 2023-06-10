@@ -22,25 +22,24 @@ while (true) {
 	$sisi_1 = ['retak', 'batu putih', 'bagus'][array_rand(['retak', 'batu putih', 'bagus'])];
 	$sisi_2 = ['retak', 'batu putih', 'bagus'][array_rand(['retak', 'batu putih', 'bagus'])];
 
-	if ($sisi_2 == '' || $sisi_2 == null) {
+	if (empty($sisi_2)) {
 		$sisi_2 = "";
 		$kualitas = "";
-		$kualitas_id = null;
 
 		//auto increment = 1
 		mysqli_query($konek, "ALTER TABLE hasil_inspeksi AUTO_INCREMENT=1");
 		//simpan data sensor ke tabel hasil_inspeksi
-		$simpan = mysqli_query($konek, "INSERT INTO hasil_inspeksi (sisi_1, sisi_2, kualitas, kualitas_id) VALUES ('$sisi_1', '$sisi_2', '$kualitas', '$kualitas_id')");
+		$simpan = mysqli_query($konek, "INSERT INTO hasil_inspeksi (sisi_1, sisi_2, kualitas) VALUES ('$sisi_1', '$sisi_2', '$kualitas')");
 
 		echo $simpan ? "Berhasil dikirim sisi_1 | " : "Gagal Terkirim sisi_1 | ";
-	} else if ($sisi_1 == '' || $sisi_1 == null) {
-		$sql = mysqli_query($konek, "SELECT sisi_1 FROM hasil_inspeksi ORDER BY id DESC");
+	} else if (empty($sisi_1)) {
+		$sql = mysqli_query($konek, "SELECT sisi_1 FROM hasil_inspeksi ORDER BY id DESC LIMIT 1");
 		$data = mysqli_fetch_array($sql);
 		$sisi_1 = $data['sisi_1'];
 
-		if ($sisi_2 == '' || $sisi_2 == null) {
+		if (empty($sisi_2)) {
 			$sisi_2 = $sisi_1;
-		} elseif ($sisi_1 == '' || $sisi_1 == null) {
+		} elseif (empty($sisi_1)) {
 			$sisi_1 = $sisi_2;
 		}
 
@@ -55,12 +54,12 @@ while (true) {
 			$kualitas_id = 1;
 		}
 
+		mysqli_query($konek, "ALTER TABLE hasil_inspeksi AUTO_INCREMENT=1");
 		//simpan data sensor ke tabel hasil_inspeksi
 		$simpan = mysqli_query($konek, "UPDATE hasil_inspeksi SET sisi_2 = '$sisi_2', kualitas = '$kualitas', kualitas_id = '$kualitas_id' ORDER BY id DESC LIMIT 1");
 
 		echo $simpan ? "Berhasil dikirim sisi_2 | " : "Gagal Terkirim sisi_2 | ";
 	}
-
 
 	sleep(2);
 }

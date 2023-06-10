@@ -14,11 +14,11 @@ if (!$konek) {
 	die("Connection failed: " . mysqli_connect_error());
 }
 
-$status = $_POST['warning'];
+$status = $_POST['status'];
 
-$delete = mysqli_query($konek, "DELETE FROM warning");
+$delete = mysqli_query($konek, "DELETE FROM status");
 
-$simpan = mysqli_query($konek, "INSERT INTO warning (status) VALUES ('$status')");
+$simpan = mysqli_query($konek, "INSERT INTO status (status) VALUES ('$status')");
 
 //uji simpan untuk memberi respon
 echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";

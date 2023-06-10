@@ -33,5 +33,5 @@ while (true) {
 	//uji simpan untuk memberi respon
 	echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";
 
-	sleep(2);
+	sleep(5);
 }

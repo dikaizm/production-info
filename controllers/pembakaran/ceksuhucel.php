@@ -14,10 +14,13 @@ $sql = mysqli_query($konek, "SELECT * from suhu_pembakaran order by id desc"); /
 
 //baca data paling atas
 $data = mysqli_fetch_array($sql);
-$suhucel = $data['suhucel'];
+$suhucel = "";
+if (!empty($data)) {
+	$suhucel = $data['suhucel'];
+}
 
 //uji, apabila bila suhucel belum ada, maka anggap suhucel = 0
-if ($suhucel < 0) $suhucel = 0;
+if ($suhucel < 0 || empty($suhucel)) $suhucel = 0;
 
 //cetak nilai suhucel
 echo $suhucel;

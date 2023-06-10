@@ -14,13 +14,20 @@ $sql = mysqli_query($konek, "SELECT * from suhu_pembakaran order by id desc"); /
 
 //baca data paling atas
 $data = mysqli_fetch_array($sql);
-$waktu = $data['waktu'];
+$waktu = "";
+if (!empty($data)) {
+	$waktu = $data['waktu'];
+}
 
 //uji, apabila bila waktu belum ada, maka anggap waktu = 0
-if ($waktu < 0) $waktu = 0;
+if ($waktu < 0 || empty($waktu)) $waktu = "";
 
 //reformat waktu ke format yang diinginkan
-$response = date("l, j F Y", strtotime($waktu));
+if (!empty($waktu)) {
+	$response = date("l, j F Y", strtotime($waktu));
+} else {
+	$response = "";
+}
 
 //cetak nilai waktu yang diformat
 echo $response;

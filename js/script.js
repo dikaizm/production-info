@@ -6,6 +6,16 @@ function toggleSidebar() {
     }
 }
 
+class StatusColor {
+    static on(id) {
+        $(`#${id}`).removeClass('border-red-600 bg-red-500 hover:bg-red-600').addClass('border-green-600 bg-green-500 hover:bg-green-600');
+    }
+    
+    static off(id) {
+        $(`#${id}`).removeClass('border-green-600 bg-green-500 hover:bg-green-600').addClass('border-red-600 bg-red-500 hover:bg-red-600'); 
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Set the scroll position to the middle
     var scrollContainer = $('#scroll-container');
@@ -48,23 +58,36 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(function () {
         // Box change color
         $.ajax({
-            url: "controllers/status.php",
+            url: "controllers/inspeksi/status.php",
             success: function (response) {
                 if (response == 'running') {
-                    $("#pembakaran-btn, #inspeksi-btn").removeClass('border-red-600 bg-red-500 hover:bg-red-600').addClass('border-green-600 bg-green-500 hover:bg-green-600');
+                    StatusColor.on('inspeksi-btn');
 
                     $("#genteng-status").html("Running")
                 } else if (response == 'cekkamera') {
                     $("#genteng-status").html("Cek kamera")
                 } else if (response == 'deviceoff' || response == 0){
-                    $("#pembakaran-btn, #inspeksi-btn").removeClass('border-green-600 bg-green-500 hover:bg-green-600').addClass('border-red-600 bg-red-500 hover:bg-red-600');
+                    StatusColor.off('inspeksi-btn');
 
                     $("#genteng-status").html("Device off")
                 }
-                console.log(response)
             }
         });
 
+        $.ajax({
+            url: "controllers/pembakaran/id.php",
+            success: function(response) {
+                var response = JSON.parse(response)
+
+                var status = response.status;
+
+                if (status == 'on') {
+                    StatusColor.on('pembakaran-btn');
+                } else {
+                    StatusColor.off('pembakaran-btn'); 
+                }
+            }
+        })
 
         // Cek genteng
         $("#genteng-id").load("controllers/inspeksi/gentengid.php");
@@ -75,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
         $("#genteng-retak").load("controllers/inspeksi/gentengretak.php");
 
         // Cek suhu
-        $("#id").load("controllers/pembakaran/id.php");
         $("#ceksuhucel").load("controllers/pembakaran/ceksuhucel.php");
         $("#ceksuhufah").load("controllers/pembakaran/ceksuhufah.php");
         $("#cekwaktu").load("controllers/pembakaran/cekwaktu.php");
