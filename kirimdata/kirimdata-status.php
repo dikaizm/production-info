@@ -14,11 +14,24 @@ if (!$konek) {
 	die("Connection failed: " . mysqli_connect_error());
 }
 
+function simpanQuery($con, $val)
+{
+	$simpan = mysqli_query($con, "INSERT INTO status (status) VALUES ('$val')");
+	echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";
+}
+
 $status = $_POST['status'];
 
-$delete = mysqli_query($konek, "DELETE FROM status");
+$sql = mysqli_query($konek, "SELECT status FROM status ORDER BY id DESC LIMIT 1");
+$data = mysqli_fetch_array($sql);
+$getStatus = $data['status'];
 
-$simpan = mysqli_query($konek, "INSERT INTO status (status) VALUES ('$status')");
-
-//uji simpan untuk memberi respon
-echo $simpan ? "Berhasil dikirim | " : "Gagal Terkirim | ";
+if (!empty($status)) {
+	if ($getStatus != 'running') {
+		simpanQuery($konek, $status);
+	} else if ($getStatus == 'running') {
+		if ($status != 'running') {
+			simpanQuery($konek, $status);
+		}
+	}
+}

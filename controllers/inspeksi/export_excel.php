@@ -11,22 +11,49 @@ $konek = mysqli_connect(
 );
 
 // menampilkan data hasil inspeksi
-$sql = mysqli_query($konek, "SELECT id, sisi_1, sisi_2, kualitas, waktu from hasil_inspeksi");
+$getData1 = mysqli_query($konek, "SELECT id, sisi_1, sisi_2, kualitas, waktu FROM hasil_inspeksi");
+$getData2 = mysqli_query($konek, "SELECT id, status, waktu FROM status");
 
-$data = mysqli_fetch_all($sql, MYSQLI_NUM);
-$header = [
-    'ID' => 'integer',
-    'Sisi 1' => 'string',
-    'Sisi 2' => 'string',
-    'Kualitas' => 'string',
-    'Waktu' => 'datetime'
+$data = [
+    mysqli_fetch_all($getData1, MYSQLI_NUM),
+    mysqli_fetch_all($getData2, MYSQLI_NUM) 
 ];
-$cols_width = [5, 10, 10, 10, 20];
 
-writeXLSX(
-    'HASIL INSPEKSI GENTENG',
-    $header,
-    $data,
+$sheets = [
     'DATA HASIL INSPEKSI',
-    $cols_width
+    'STATUS DEVICE'
+];
+
+$headers = [
+    $header1 = [
+        'ID' => 'integer',
+        'Sisi 1' => 'string',
+        'Sisi 2' => 'string',
+        'Kualitas' => 'string',
+        'Waktu' => 'datetime'
+    ],
+    $header2 = [
+        'ID' => 'integer',
+        'Status' => 'string',
+        'Waktu' => 'datetime'
+    ]
+];
+
+$titles = [
+    'DATA HASIL INSPEKSI',
+    'STATUS DEVICE'
+];
+
+$cols_widths = [
+    [5, 10, 10, 10, 20],
+    [5, 10, 20], 
+];
+
+writeXLSXSheets(
+    'HASIL INSPEKSI GENTENG',
+    $sheets,
+    $headers,
+    $data,
+    $titles,
+    $cols_widths
 );

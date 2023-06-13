@@ -60,15 +60,19 @@ document.addEventListener('DOMContentLoaded', function () {
         $.ajax({
             url: "controllers/inspeksi/status.php",
             success: function (response) {
-                if (response == 'running') {
+                var response = JSON.parse(response)
+
+                console.log(response) 
+                
+                if (response.data == 'running') {
                     StatusColor.on('inspeksi-btn');
-
+                    
                     $("#genteng-status").html("Running")
-                } else if (response == 'cekkamera') {
+                } else if (response.data == 'cekkamera') {
                     $("#genteng-status").html("Cek kamera")
-                } else if (response == 'deviceoff' || response == 0){
+                } else if (response.data == 'deviceoff' || response.data == 0){
                     StatusColor.off('inspeksi-btn');
-
+                    
                     $("#genteng-status").html("Device off")
                 }
             }
