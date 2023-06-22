@@ -16,7 +16,7 @@ $getData2 = mysqli_query($konek, "SELECT id, status, waktu FROM status");
 
 $data = [
     mysqli_fetch_all($getData1, MYSQLI_NUM),
-    mysqli_fetch_all($getData2, MYSQLI_NUM) 
+    mysqli_fetch_all($getData2, MYSQLI_NUM)
 ];
 
 $sheets = [
@@ -46,7 +46,7 @@ $titles = [
 
 $cols_widths = [
     [5, 10, 10, 10, 20],
-    [5, 10, 20], 
+    [5, 10, 20],
 ];
 
 writeXLSXSheets(

@@ -8,7 +8,7 @@
   <title>Production Information System</title>
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" type="text/javascript"></script>
@@ -153,7 +153,7 @@
         <!-- Group 1 -->
         <div class="flex items-end">
           <div class="flex h-40 w-40 map-flex border-l-2  border-y-2 text-center">
-           Proses Pembakaran 
+            Proses Pembakaran
           </div>
 
           <div class="flex flex-none items-center justify-center text-gray-600 relative border-2 border-gray-500 w-36 h-72 text-center font-bold">
@@ -209,9 +209,7 @@
                   <div class="grid items-center justify-center absolute right-0 top-0 bg-yellow-400 w-fit py-1 px-1 text-white border-2 border-yellow-500 text-3xs">Kualitas 2</div>
                   <div class="grid items-center justify-center absolute right-0 top-0 mt-8 bg-red-400 w-fit py-1 px-1 text-white border-2 border-red-500 text-3xs">Kualitas 3</div>
 
-                  <button type="button" id="inspeksi-btn" data-template="inspeksi-card" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-red-600 bg-red-500 hover:bg-red-600 transition-all">Area Inspeksi & Pengecatan
-
-                  </button>
+                  <button type="button" id="inspeksi-btn" data-template="inspeksi-card" class="grid items-center justify-center absolute left-0 bottom-0 bg-green-500 w-24 h-10 text-white border-2 border-red-600 bg-red-500 hover:bg-red-600 transition-all">Area Inspeksi & Pengecatan</button>
                 </div>
 
                 <button type="button" id="pembakaran-btn" data-template="pembakaran-card" class="grid relative items-center justify-center w-full h-full row-span-4 text-white border-2 border-red-600 bg-red-500 hover:bg-red-600 transition-all">
@@ -238,7 +236,7 @@
                   <p>Fahrenheit : <span id="ceksuhufah"></span> °F</p>
                 </div>
 
-                <button type="button" class="flex items-center justify-between w-full p-2 mt-4 text-sm text-white font-semibold rounded-lg bg-gray-700 hover:bg-gray-800" onclick="window.open('controllers/pembakaran/export_excel.php')">
+                <button type="button" class="flex items-center justify-between w-full p-2 mt-4 text-sm text-white font-semibold rounded-lg bg-gray-700 hover:bg-gray-800" onclick="openModal('modal-pw', 'pembakaran-modal')">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" id="download">
                     <path fill="#fff" d="M12 4a1 1 0 0 0-1 1v9.529l-4.218-4.223a1.043 1.043 0 0 0-1.476 0 1.046 1.046 0 0 0 0 1.478l5.904 5.91c.217.217.506.319.79.305.284.014.573-.088.79-.305l5.904-5.91a1.046 1.046 0 0 0 0-1.478 1.043 1.043 0 0 0-1.476 0L13 14.529V5a1 1 0 0 0-1-1zM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"></path>
                   </svg>
@@ -265,7 +263,7 @@
                   <p>Kualitas 2 : <span id="genteng-batuputih"></span></p>
                   <p>Kualitas 3 : <span id="genteng-retak"></span></p>
                 </div>
-                <button type="button" class="flex items-center justify-between w-full p-2 mt-4 text-sm text-white font-semibold rounded-lg bg-gray-700 hover:bg-gray-800" onclick="window.open('controllers/inspeksi/export_excel.php')">
+                <button type="button" class="flex items-center justify-between w-full p-2 mt-4 text-sm text-white font-semibold rounded-lg bg-gray-700 hover:bg-gray-800" onclick="openModal('modal-pw', 'inspeksi-modal')">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" id="download">
                     <path fill="#fff" d="M12 4a1 1 0 0 0-1 1v9.529l-4.218-4.223a1.043 1.043 0 0 0-1.476 0 1.046 1.046 0 0 0 0 1.478l5.904 5.91c.217.217.506.319.79.305.284.014.573-.088.79-.305l5.904-5.91a1.046 1.046 0 0 0 0-1.478 1.043 1.043 0 0 0-1.476 0L13 14.529V5a1 1 0 0 0-1-1zM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"></path>
                   </svg>
@@ -301,6 +299,37 @@
       </div>
     </div>
   </main>
+
+  <div class="fixed z-50 w-full h-screen inset-x-0 inset-y-0 flex justify-center items-center hidden" data-info="" id="modal-pw">
+    <div class="absolute inset-x-0 bg-white rounded-lg max-w-xs mx-auto h-fit p-4 space-y-3">
+      <div class="flex justify-between items-center">
+        <h4 class="text-base font-semibold">Password</h4>
+        <button id="modal-close">
+          <svg class="text-black h-5" viewbox="0 0 40 40" stroke-width="3" fill="transparent" stroke-linecap="round" stroke="currentColor">
+            <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
+          </svg>
+        </button>
+      </div>
+      <hr>
+      <form id="form-dl" class="space-y-6" method="POST">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Masukkan password untuk mengunduh file</label>
+          </div>
+          <div>
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2" required>
+          </div>
+          <p id="status-dl" class="text-xs text-red-500"></p>
+        </div>
+
+        <div>
+          <button type="submit" class="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-700 transition-all">Download</button>
+        </div>
+      </form>
+    </div>
+    <div class="w-full h-screen bg-black/40"></div>
+  </div>
+
 
   <!-- Footer -->
   <footer class="fixed bottom-0 w-full">

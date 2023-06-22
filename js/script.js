@@ -1,3 +1,27 @@
+class TogglePopup {
+    static inspeksi(id) {
+        $(`#${id}`).on('click', function () {
+            $('#inspeksi-btn').click();
+        })
+    }
+
+    static pembakaran(id) {
+        $(`#${id}`).on('click', function () {
+            $('#pembakaran-btn').click();
+        })
+    }
+}
+
+class StatusColor {
+    static on(id) {
+        $(`#${id}`).removeClass('border-red-600 bg-red-500 hover:bg-red-600').addClass('border-green-600 bg-green-500 hover:bg-green-600');
+    }
+
+    static off(id) {
+        $(`#${id}`).removeClass('border-green-600 bg-green-500 hover:bg-green-600').addClass('border-red-600 bg-red-500 hover:bg-red-600');
+    }
+}
+
 function toggleSidebar() {
     if ($('#sidebar-full').hasClass('-translate-x-full')) {
         $('#sidebar-full').removeClass('-translate-x-full');
@@ -6,17 +30,59 @@ function toggleSidebar() {
     }
 }
 
-class StatusColor {
-    static on(id) {
-        $(`#${id}`).removeClass('border-red-600 bg-red-500 hover:bg-red-600').addClass('border-green-600 bg-green-500 hover:bg-green-600');
+function openModal(modal, id) {
+    $(`#${modal}`).removeClass('hidden').attr('data-info', id)
+    tippy.hideAll()
+    getData()
+}
+
+function closeModal(modal) {
+    $(`#${modal}`).addClass('hidden').attr('data-info', '')
+    $('#form-dl')[0].reset();
+    $('#status-dl').html('')
+}
+
+function getData() {
+    const form = $('#form-dl')
+    const type = $('#modal-pw').data('info')
+    const urlPass = 'controllers/password.php'
+    const urlInspeksi = 'controllers/inspeksi/export_excel.php'
+    const urlPembakaran = 'controllers/pembakaran/export_excel.php'
+
+    function modalType(urlType, data) {
+        $.ajax({
+            url: urlPass,
+            method: 'POST',
+            data: data,
+            success: function (response) {
+                if (response == 'true') {
+                    closeModal('modal-pw')
+                    window.open(urlType)
+                } else {
+                    $('#status-dl').html('Password yang Anda masukkan salah!')
+                }
+            }
+        })
     }
-    
-    static off(id) {
-        $(`#${id}`).removeClass('border-green-600 bg-green-500 hover:bg-green-600').addClass('border-red-600 bg-red-500 hover:bg-red-600'); 
-    }
+
+    form.submit(function (event) {
+        event.preventDefault();
+        const formData = form.serializeArray();
+        const data = formData.reduce(function (result, field) {
+            result[field.name] = field.value;
+            return result;
+        }, {});
+
+        if (type == 'inspeksi-modal') {
+            modalType(urlInspeksi, data)
+        } else if (type == 'pembakaran-modal') {
+            modalType(urlPembakaran, data)
+        }
+    })
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
     // Set the scroll position to the middle
     var scrollContainer = $('#scroll-container');
     var middlePosition = scrollContainer[0].scrollWidth / 2 - scrollContainer.outerWidth() / 1.65;
@@ -27,28 +93,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Popover interaction
     // Sidebar full
-    $('#inspeksi-sidebar').on('click', function () {
-        $('#inspeksi-btn').click();
-    })
-    $('#pembakaran-sidebar').on('click', function () {
-        $('#pembakaran-btn').click();
-    })
+    TogglePopup.inspeksi('inspeksi-sidebar');
+    TogglePopup.pembakaran('pembakaran-sidebar');
 
     // Sidebar partial
-    $('#inspeksi-sidebar-icon').on('click', function () {
-        $('#inspeksi-btn').click();
-    })
-    $('#pembakaran-sidebar-icon').on('click', function () {
-        $('#pembakaran-btn').click();
-    })
+    TogglePopup.inspeksi('inspeksi-sidebar-icon');
+    TogglePopup.pembakaran('pembakaran-sidebar-icon');
 
     // Tabbar mobile
-    $('#inspeksi-tabbar').on('click', function () {
-        $('#inspeksi-btn').click();
-    })
-    $('#pembakaran-tabbar').on('click', function () {
-        $('#pembakaran-btn').click();
-    })
+    TogglePopup.inspeksi('inspeksi-tabbar');
+    TogglePopup.pembakaran('pembakaran-tabbar');
 
     document.addEventListener('contextmenu', function (event) {
         event.preventDefault();
@@ -62,17 +116,15 @@ document.addEventListener('DOMContentLoaded', function () {
             success: function (response) {
                 var response = JSON.parse(response)
 
-                console.log(response) 
-                
                 if (response.data == 'running') {
                     StatusColor.on('inspeksi-btn');
-                    
+
                     $("#genteng-status").html("Running")
                 } else if (response.data == 'cekkamera') {
                     $("#genteng-status").html("Cek kamera")
-                } else if (response.data == 'deviceoff' || response.data == 0){
+                } else if (response.data == 'deviceoff' || response.data == 0) {
                     StatusColor.off('inspeksi-btn');
-                    
+
                     $("#genteng-status").html("Device off")
                 }
             }
@@ -80,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         $.ajax({
             url: "controllers/pembakaran/id.php",
-            success: function(response) {
+            success: function (response) {
                 var response = JSON.parse(response)
 
                 var status = response.status;
@@ -88,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (status == 'on') {
                     StatusColor.on('pembakaran-btn');
                 } else {
-                    StatusColor.off('pembakaran-btn'); 
+                    StatusColor.off('pembakaran-btn');
                 }
             }
         })
@@ -143,4 +195,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1000);
         },
     });
+
+    // Modal download
+    $('#modal-close').on('click', function () {
+        closeModal('modal-pw')
+    })
 })
